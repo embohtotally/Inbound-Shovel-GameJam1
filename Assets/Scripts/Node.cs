@@ -14,7 +14,7 @@ public class Node : MonoBehaviour
     public GameObject enemyPrefab; // <-- ADD THIS LINE
     [Header("Node Connections")]
     public List<Node> adjacentNodes = new List<Node>();
-
+    public List<DialogueLine> dialogueLines;
     [Header("Visuals")]
     public SpriteRenderer nodeSprite;
     public Color defaultColor = Color.white;
