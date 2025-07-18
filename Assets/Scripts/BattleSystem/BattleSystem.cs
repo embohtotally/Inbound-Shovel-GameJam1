@@ -7,7 +7,7 @@ public enum BattleState { INACTIVE, START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
     public BattleState state;
-
+    public static BattleSystem instance;
     [Header("Scene References")]
     public GameObject mapStage;
     public GameObject battleStage;
@@ -45,7 +45,10 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         StartCoroutine(SetupBattle(enemyToSpawn));
     }
-
+    void Awake()
+    {
+        instance = this;
+    }
     void PlayerTurn()
     {
         // NEW: Check if the player is supposed to miss their turn at the START of their turn.
@@ -105,7 +108,7 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYERTURN) return;
         Debug.Log("You try to Scram!");
 
-        if (Random.Range(0f, 1f) <= 0.8f) // 80% chance
+        if (Random.Range(0f, 1f) <= 0.2f) // 20% chance
         {
             Debug.Log("POOF! You successfully ran away!");
             // CHANGED: We now call a dedicated coroutine for fleeing.
@@ -216,27 +219,38 @@ public class BattleSystem : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         Debug.Log("--- Enemy's Turn ---");
-
-        // The check for the player missing their turn has been moved to PlayerTurn().
-        // This method now only checks if the ENEMY is missing its turn.
+        string feedbackMessage = ""; // To store the enemy's action text
 
         if (enemyStats.willMissNextTurn)
         {
-            Debug.Log("The enemy is dizzy/stumbled and misses its turn!");
-            enemyStats.willMissNextTurn = false; // The effect is now used up
+            feedbackMessage = "The Enemy is dizzy and misses its turn!";
+            enemyStats.willMissNextTurn = false;
         }
         else
         {
-            // Enemy attack logic
-            enemyStats.animator.SetTrigger("Attack");
-            yield return new WaitForSeconds(0.5f); // Wait for impact
-            if (!enemyStats.bigPinchDisabled) playerStats.TakeDamage(1);
+            // Simple Enemy AI
+            if (!enemyStats.bigPinchDisabled && Random.Range(0f, 1f) <= 0.6f)
+            {
+                feedbackMessage = "The Enemy uses Big Pinch!";
+                enemyStats.animator.SetTrigger("Attack");
+                yield return new WaitForSeconds(0.5f); // Wait for animation impact
+                playerStats.TakeDamage(1);
+            }
+            else
+            {
+                feedbackMessage = "The Enemy blows some defensive tactics.";
+                // This is a non-damaging move, so no attack animation is needed
+            }
         }
 
-        // Reset the Big Pinch disabled status at the end of the enemy's turn
-        enemyStats.bigPinchDisabled = false;
+        // --- NEW: Display the feedback ---
+        actionFeedbackText.text = feedbackMessage;
+        actionFeedbackText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f); // Wait for the player to read the message
+        actionFeedbackText.gameObject.SetActive(false);
+        // --------------------------------
 
-        yield return new WaitForSeconds(1.5f);
+        enemyStats.bigPinchDisabled = false;
 
         if (playerStats.currentHealth <= 0)
         {

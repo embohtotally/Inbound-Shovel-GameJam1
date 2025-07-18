@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public float zoomInDuration = 0.5f;
 
     private Node currentNode;
-    private bool isMoving = false;
+    public bool isMoving = false;
     private List<Node> allNodesInScene;
     private List<GameObject> activeLines = new List<GameObject>();
 
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleNodeClicked(Node clickedNode)
     {
-        if (isMoving) return;
+        if (isMoving) return; // This will now also prevent movement during dialogue
 
         if (currentNode.adjacentNodes.Contains(clickedNode))
         {
@@ -117,6 +117,17 @@ public class PlayerController : MonoBehaviour
             case NodeType.Path:
             case NodeType.Treasure:
             case NodeType.Story:
+                Debug.Log("A STORY event unfolds...");
+                // Check if the node has dialogue and a manager exists
+                if (currentNode.dialogueLines.Count > 0 && DialogueManager.instance != null)
+                {
+                    DialogueManager.instance.StartDialogue(currentNode.dialogueLines, this);
+                }
+                else
+                {
+                    isMoving = false; // No dialogue, so allow movement
+                }
+                break;
             case NodeType.Rest:
                 if (type == NodeType.Rest)
                 {
