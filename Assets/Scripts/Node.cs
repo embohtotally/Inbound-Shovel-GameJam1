@@ -3,26 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+// An enum defines a set of named constants. Easy to use in the inspector.
+public enum NodeType { Path, Encounter, Treasure, Story, Rest }
+
 public class Node : MonoBehaviour
 {
+    [Header("Node Settings")]
+    [Tooltip("The type of event that triggers when landing on this node.")]
+    public NodeType nodeType = NodeType.Path; // <-- NEW
+    public GameObject enemyPrefab; // <-- ADD THIS LINE
     [Header("Node Connections")]
-    [Tooltip("Drag other Node objects here to define connections.")]
     public List<Node> adjacentNodes = new List<Node>();
 
     [Header("Visuals")]
-    [Tooltip("The SpriteRenderer for this node's visual.")]
     public SpriteRenderer nodeSprite;
     public Color defaultColor = Color.white;
     public Color reachableColor = Color.green;
     public Color hoverColor = Color.yellow;
 
     [Header("Hover Effect")]
-    [Tooltip("How much the node scales up when hovered over.")]
     public float hoverScaleMultiplier = 1.2f;
-    [Tooltip("How long the smooth scaling animation takes in seconds.")]
     public float scaleDuration = 0.1f;
 
-    // Private variables to store state
+    // Private variables
     private Vector3 originalScale;
     private bool isCurrentlyReachable = false;
     private Coroutine scaleCoroutine;
@@ -48,21 +51,17 @@ public class Node : MonoBehaviour
     {
         if (isCurrentlyReachable)
         {
-            // Stop any existing scaling animation to start a new one
             if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
-
-            // Start the scale-up animation
             scaleCoroutine = StartCoroutine(AnimateScale(originalScale * hoverScaleMultiplier));
             SetColor(hoverColor);
         }
     }
 
+
+
     private void OnMouseExit()
     {
-        // Stop any existing scaling animation to start a new one
         if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
-
-        // Start the scale-down animation
         scaleCoroutine = StartCoroutine(AnimateScale(originalScale));
 
         if (isCurrentlyReachable)
@@ -71,7 +70,6 @@ public class Node : MonoBehaviour
         }
     }
 
-    // This coroutine animates the scale smoothly over time
     private IEnumerator AnimateScale(Vector3 targetScale)
     {
         Vector3 startScale = transform.localScale;
@@ -79,13 +77,10 @@ public class Node : MonoBehaviour
 
         while (timeElapsed < scaleDuration)
         {
-            // Lerp (Linear Interpolation) calculates the point between start and end
             transform.localScale = Vector3.Lerp(startScale, targetScale, timeElapsed / scaleDuration);
             timeElapsed += Time.deltaTime;
-            yield return null; // Wait for the next frame before continuing
+            yield return null;
         }
-
-        // Ensure the scale is set exactly to the target at the end
         transform.localScale = targetScale;
     }
 
@@ -105,8 +100,7 @@ public class Node : MonoBehaviour
         }
     }
 
-    // --- The rest of your script (OnValidate, OnDrawGizmos) remains the same ---
-
+    // Gizmos and OnValidate can remain the same
     void OnValidate()
     {
         if (nodeSprite == null)
@@ -117,6 +111,8 @@ public class Node : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // To avoid clutter, let's comment this out since we have the new Line Renderer
+        /*
         Gizmos.color = Color.blue;
         foreach (Node adjacentNode in adjacentNodes)
         {
@@ -125,5 +121,6 @@ public class Node : MonoBehaviour
                 Gizmos.DrawLine(transform.position, adjacentNode.transform.position);
             }
         }
+        */
     }
 }
