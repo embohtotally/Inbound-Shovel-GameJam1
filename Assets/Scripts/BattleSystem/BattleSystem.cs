@@ -60,7 +60,8 @@ public class BattleSystem : MonoBehaviour
             StartCoroutine(EnemyTurn()); // Immediately skip to the enemy's turn
             return; // Stop the rest of this method from running
         }
-
+        actionFeedbackText.text = "Your turn, choose a trick!";
+        actionFeedbackText.gameObject.SetActive(true);
         Debug.Log("Player's turn! Choose a Trick.");
         SetActionButtons(true);
     }
@@ -118,6 +119,10 @@ public class BattleSystem : MonoBehaviour
         {
             Debug.Log("You tripped while trying to run! You lose your turn.");
             playerStats.willMissNextTurn = true;
+
+            actionFeedbackText.text = "You tripped while trying to run and lost your turn!";
+            actionFeedbackText.gameObject.SetActive(true);
+
             StartCoroutine(EndPlayerTurn());
         }
     }
