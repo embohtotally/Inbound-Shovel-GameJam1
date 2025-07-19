@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public enum BattleState { INACTIVE, START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
@@ -41,7 +42,7 @@ public class BattleSystem : MonoBehaviour
         outcomeText.gameObject.SetActive(false);
         mapStage.SetActive(false);
         battleStage.SetActive(true);
-
+        AudioManager.instance.PlayMusic("BattleMusic");
         state = BattleState.START;
         StartCoroutine(SetupBattle(enemyToSpawn));
     }
@@ -136,7 +137,7 @@ public class BattleSystem : MonoBehaviour
         actionFeedbackText.gameObject.SetActive(true);
         yield return new WaitForSeconds(2f);
         actionFeedbackText.gameObject.SetActive(false);
-
+        AudioManager.instance.PlayMusic("Theme");
         // Return to map logic
         playerCharacter.transform.position = playerOriginalMapPosition;
         playerCharacter.GetComponent<Animator>().enabled = false;
@@ -157,6 +158,7 @@ public class BattleSystem : MonoBehaviour
         switch (action)
         {
             case "BonkHead":
+                AudioManager.instance.PlaySFX("Bonk");
                 enemyStats.TakeDamage(1);
                 feedbackMessage = "You used Bonk Head, dealing 1 damage.";
                 if (Random.Range(0f, 1f) <= 0.3f)
@@ -170,6 +172,7 @@ public class BattleSystem : MonoBehaviour
                 }
                 break;
             case "TripLegs":
+                AudioManager.instance.PlaySFX("Bonk");
                 feedbackMessage = "You used Trip Legs.";
                 if (Random.Range(0f, 1f) <= 0.7f)
                 {
@@ -182,12 +185,14 @@ public class BattleSystem : MonoBehaviour
                 }
                 break;
             case "PokeClaws":
+                AudioManager.instance.PlaySFX("Bonk");
                 enemyStats.bigPinchDisabled = true;
                 feedbackMessage = "You poked the enemy's claws, disabling its Big Pinch!";
                 break;
 
             // --- THIS IS THE MODIFIED CASE ---
             case "Scram":
+                AudioManager.instance.PlaySFX("Flee");
                 if (Random.Range(0f, 1f) <= 0.8f)
                 {
                     // On success, we call the FleeBattle coroutine and exit
@@ -276,32 +281,35 @@ public class BattleSystem : MonoBehaviour
         if (playerWon)
         {
             outcomeText.text = "YOU WON!";
-            if (enemyStats != null) enemyStats.animator.SetTrigger("Die"); // Added: Trigger enemy Die animation
+            if (enemyStats != null) enemyStats.animator.SetTrigger("Die");
         }
         else
         {
             outcomeText.text = "Wiped Out!";
-            if (playerStats != null) playerStats.animator.SetTrigger("Die"); // Added: Trigger player Die animation
+            if (playerStats != null) playerStats.animator.SetTrigger("Die");
         }
 
         outcomeText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f); // Added: Wait for death animation to play
+        yield return new WaitForSeconds(2.5f); // Wait for animations and to read the text
 
-        if (playerWon == false)
+        // --- THIS IS THE CORRECTED LOGIC ---
+        if (playerWon)
         {
-            playerStats.currentHealth = playerStats.maxHealth;
-            playerStats.UpdateHealthUI();
+            // If you won, return to the map.
+            AudioManager.instance.PlayMusic("Theme");
+            playerCharacter.transform.position = playerOriginalMapPosition;
+            playerCharacter.GetComponent<Animator>().enabled = false;
+            battleStage.SetActive(false);
+            mapStage.SetActive(true);
+            if (enemyStats != null) Destroy(enemyStats.gameObject);
+            state = BattleState.INACTIVE;
         }
-
-        playerCharacter.transform.position = playerOriginalMapPosition;
-        playerCharacter.GetComponent<Animator>().enabled = false; // Added: Turn player animator OFF
-
-        battleStage.SetActive(false);
-        mapStage.SetActive(true);
-
-        if (enemyStats != null) Destroy(enemyStats.gameObject);
-
-        state = BattleState.INACTIVE;
+        else
+        {
+            // If you lost, go to the Main Menu.
+            // We don't need to restore health or hide things because the scene is changing.
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     IEnumerator ShowFeedbackAndEndBattle(string message, bool playerWon)

@@ -24,7 +24,7 @@ public class CharacterStats : MonoBehaviour
     {
         currentHealth -= damage;
         if (currentHealth < 0) currentHealth = 0;
-
+        AudioManager.instance.PlaySFX("Hit");
         if (animator != null)
         {
             animator.SetTrigger("TakeDamage"); // <-- NEW

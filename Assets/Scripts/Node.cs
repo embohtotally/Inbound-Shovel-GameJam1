@@ -54,6 +54,7 @@ public class Node : MonoBehaviour
             if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
             scaleCoroutine = StartCoroutine(AnimateScale(originalScale * hoverScaleMultiplier));
             SetColor(hoverColor);
+            AudioManager.instance.PlaySFX("Hover");
         }
     }
 

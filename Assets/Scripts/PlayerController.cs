@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private Animator myAnimator;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public bool isMoving = false;
     private List<Node> allNodesInScene;
     private List<GameObject> activeLines = new List<GameObject>();
-
+    public GameObject winPanel;
     void OnEnable() { Node.OnNodeClicked += HandleNodeClicked; }
     void OnDisable() { Node.OnNodeClicked -= HandleNodeClicked; }
 
@@ -37,7 +37,10 @@ public class PlayerController : MonoBehaviour
         myAnimator.enabled = false; // Start with animator OFF
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         allNodesInScene = new List<Node>(FindObjectsOfType<Node>());
-
+        if (winPanel != null)
+        {
+            winPanel.SetActive(false);
+        }
         if (startingNode == null)
         {
             Debug.LogError("FATAL: Starting Node is not set on the Player Controller!");
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour
         isMoving = true;
         ClearAllReachableNodes();
         ClearLineVisuals();
-
+        AudioManager.instance.PlaySFX("PlayerMove");
         Vector3 startPosition = transform.position;
         Vector3 endPosition = targetNode.transform.position;
 
@@ -116,7 +119,14 @@ public class PlayerController : MonoBehaviour
 
             // For all non-battle nodes, we allow the player to move again immediately.
             case NodeType.Path:
+                isMoving = false;
+                break;
             case NodeType.Treasure:
+                // --- THIS IS THE NEW LOGIC ---
+                Debug.Log("You reached the treasure! YOU WIN!");
+                // Load the Main Menu scene.
+                StartCoroutine(WinGameSequence());// Make sure your scene is named "MainMenu"
+                break;
             case NodeType.Story:
                 Debug.Log("A STORY event unfolds...");
                 // Check if the node has dialogue and a manager exists
@@ -142,6 +152,23 @@ public class PlayerController : MonoBehaviour
                 isMoving = false;
                 break;
         }
+    }
+
+    IEnumerator WinGameSequence()
+    {
+        isMoving = true; // Lock player movement
+
+        // Show the "You Win" panel
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
+        }
+
+        // Wait for 3 seconds
+        yield return new WaitForSeconds(3f);
+
+        // Load the Main Menu scene
+        SceneManager.LoadScene("MainMenu");
     }
 
     IEnumerator EnterBattleTransition()

@@ -53,6 +53,8 @@ public class DialogueManager : MonoBehaviour
             {
                 if (typingCoroutine != null) StopCoroutine(typingCoroutine);
                 dialogueText.text = currentFullLine;
+
+                
                 isTyping = false;
             }
             else
@@ -89,7 +91,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         var currentLine = dialogueQueue.Dequeue();
-
+        AudioManager.instance.PlaySFX("Typing");
         speakerText.text = currentLine.speakerName;
         currentFullLine = currentLine.dialogueText;
 
@@ -129,9 +131,19 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         dialogueText.text = "";
+        int letterCount = 0; // Initialize a counter
+
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
+            letterCount++; // Increment the counter for each letter
+
+            // If the letter count is a multiple of 5, play the sound.
+            if (letterCount % 4 == 0)
+            {
+                AudioManager.instance.PlaySFX("Typing");
+            }
+
             yield return new WaitForSeconds(typingSpeed);
         }
         isTyping = false;

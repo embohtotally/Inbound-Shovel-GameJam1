@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Africa.unity
     guid: 4d7906d1a0dbf6047981d7806a862ea0
+  - enabled: 1
+    path: Assets/Scenes/Islandia.unity
+    guid: daf301c0a4c5e654eaf3e12b22631bbf
   m_configObjects: {}
