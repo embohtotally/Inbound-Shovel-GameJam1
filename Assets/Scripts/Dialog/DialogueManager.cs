@@ -102,6 +102,9 @@ public class DialogueManager : MonoBehaviour
         speakerImageA.sprite = currentLine.speakerImageA;
         speakerImageB.sprite = currentLine.speakerImageB;
 
+        speakerImageA.preserveAspect = true;
+        speakerImageB.preserveAspect = true;
+
         speakerImageA.gameObject.SetActive(currentLine.speakerImageA != null);
         speakerImageB.gameObject.SetActive(currentLine.speakerImageB != null);
 
