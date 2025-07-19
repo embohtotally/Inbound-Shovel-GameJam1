@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForEndOfFrame();
         UpdateReachableNodes();
         UpdateLineVisuals();
+        TriggerNodeEvent(currentNode.nodeType);
     }
 
     private void HandleNodeClicked(Node clickedNode)
