@@ -317,12 +317,12 @@ MonoBehaviour:
   - {fileID: 2036792297}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: Dead end?
+    dialogueText: A harsh fight i had just now..
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Perharps not...
+    dialogueText: Well, it can't be worse than it right?
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -770,19 +770,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c823edfdbfe837e4baff81e9922fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeType: 0
+  nodeType: 3
   enemyPrefab: {fileID: 0}
   adjacentNodes:
   - {fileID: 1752426233}
   - {fileID: 429212549}
+  - {fileID: 1308671990}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: People die when they're killed
+    dialogueText: Hm.... this doesn't seem right
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Just because you're correct doesn't mean you're right
+    dialogueText: Is there any shorcut?
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -1635,7 +1636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c823edfdbfe837e4baff81e9922fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeType: 0
+  nodeType: 3
   enemyPrefab: {fileID: 0}
   adjacentNodes:
   - {fileID: 429212549}
@@ -1644,12 +1645,12 @@ MonoBehaviour:
   - {fileID: 613613904}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: People die when they're killed
+    dialogueText: Obsacles after obstacles
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Just because you're correct doesn't mean you're right
+    dialogueText: Grandpa....
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -1802,25 +1803,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c823edfdbfe837e4baff81e9922fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeType: 0
+  nodeType: 3
   enemyPrefab: {fileID: 0}
   adjacentNodes:
   - {fileID: 28314019}
   - {fileID: 613613904}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: There are a lot of hidden storylines here...
+    dialogueText: '>.<'
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Perharps, you want to search all of them all out?
+    dialogueText: Can't cheat out
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: A little bit of hint, <b>Madagascar<b> might be the one if not,
-      one of the most beautiful island in africa.
+    dialogueText: better take the hard way instead of easy way cuz i'll learn better
+      the way it is..
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -2183,7 +2184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c823edfdbfe837e4baff81e9922fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeType: 0
+  nodeType: 3
   enemyPrefab: {fileID: 0}
   adjacentNodes:
   - {fileID: 1752426233}
@@ -2192,12 +2193,13 @@ MonoBehaviour:
   - {fileID: 322798762}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: People die when they're killed
+    dialogueText: I feel like the journey comes to an end soon...
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Just because you're correct doesn't mean you're right
+    dialogueText: (The authors purposely didnt implement quit button so you guys
+      cant quit while playing hehehe.)
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -2528,12 +2530,12 @@ MonoBehaviour:
   - {fileID: 570554187}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: Ain't gonna lie, a big continent this is..
+    dialogueText: Another big continent....
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: A long way to go, it is
+    dialogueText: What a better way than to explore it, is it?
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -2762,7 +2764,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 3.5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2850,12 +2852,12 @@ MonoBehaviour:
   - {fileID: 1773474465}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: Ain't gonna lie, a big continent this is..
+    dialogueText: Hm...
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: A long way to go, it is
+    dialogueText: Better be careful...
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -3282,6 +3284,7 @@ MonoBehaviour:
   - {fileID: 372353119}
   - {fileID: 28314019}
   - {fileID: 1038307168}
+  - {fileID: 1025337228}
   dialogueLines: []
   nodeSprite: {fileID: 613613905}
   defaultColor: {r: 1, g: 1, b: 1, a: 0}
@@ -5170,12 +5173,12 @@ MonoBehaviour:
   - {fileID: 2066721618}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: The authors have ran out of lines to be said
+    dialogueText: 'Morning? Night? '
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Don't forget to eat healthy food!
+    dialogueText: What day is this now?
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -5274,6 +5277,7 @@ MonoBehaviour:
   - {fileID: 946485261}
   - {fileID: 613613904}
   - {fileID: 1935213744}
+  - {fileID: 322798762}
   dialogueLines: []
   nodeSprite: {fileID: 1038307169}
   defaultColor: {r: 1, g: 1, b: 1, a: 0}
@@ -5984,6 +5988,7 @@ MonoBehaviour:
   - {fileID: 1752426233}
   - {fileID: 1308671990}
   - {fileID: 809562744}
+  - {fileID: 1882523768}
   dialogueLines: []
   nodeSprite: {fileID: 1183539584}
   defaultColor: {r: 1, g: 1, b: 1, a: 0}
@@ -6940,23 +6945,18 @@ MonoBehaviour:
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: The authors just wants to thank you that for playing their game
+    dialogueText: Both authors want to travel like in the game too!
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: if you happen to be free then please look at these out on instagram
+    dialogueText: Perharps you could give support to them in instagram? @adit.rm_
+      and @naufalafif2015 >.<
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: '@adit.rm_ as a programmer and game designer and @naufalafif2015
-      as a game artist and the technical'
-    speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
-    speakerImageB: {fileID: 0}
-    isSpeakerAActive: 1
-  - speakerName: Leonardo
-    dialogueText: be sure to rate out our game at Itch.io too!
+    dialogueText: Current both of them are enrolled in bachelor degree in Indonesia
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -7472,12 +7472,12 @@ MonoBehaviour:
   - {fileID: 1025337228}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: The authors have ran out of lines to be said
+    dialogueText: Gotta be more careful on which path i'll select
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Don't forget to eat healthy food!
+    dialogueText: I still have a long journey
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -8405,7 +8405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c823edfdbfe837e4baff81e9922fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeType: 0
+  nodeType: 3
   enemyPrefab: {fileID: 0}
   adjacentNodes:
   - {fileID: 1183539583}
@@ -8418,6 +8418,12 @@ MonoBehaviour:
     isSpeakerAActive: 1
   - speakerName: Leonardo
     dialogueText: May the one in the sky bless you through your journey
+    speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
+    speakerImageB: {fileID: 0}
+    isSpeakerAActive: 1
+  - speakerName: Leonardo
+    dialogueText: The authors are praying for the one who are playing our game to
+      be healthy and able to achieve their dream
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -9071,12 +9077,12 @@ MonoBehaviour:
   - {fileID: 61685715}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: Dead end?
+    dialogueText: Better have safe than sorry
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Perharps not...
+    dialogueText: Rest area ahead!
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
@@ -9237,17 +9243,17 @@ MonoBehaviour:
   nodeType: 3
   enemyPrefab: {fileID: 0}
   adjacentNodes:
-  - {fileID: 1795810794}
-  - {fileID: 1795810794}
+  - {fileID: 1025337228}
+  - {fileID: 1038307168}
   - {fileID: 613613904}
   dialogueLines:
   - speakerName: Leonardo
-    dialogueText: The authors have ran out of lines to be said
+    dialogueText: I like chicken
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1
   - speakerName: Leonardo
-    dialogueText: Don't forget to eat healthy food!
+    dialogueText: KFC, Watermelon kinda nice
     speakerImageA: {fileID: 21300000, guid: 072335b11e245964e879c6957f9993d8, type: 3}
     speakerImageB: {fileID: 0}
     isSpeakerAActive: 1

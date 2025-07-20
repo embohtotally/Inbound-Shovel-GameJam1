@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c823edfdbfe837e4baff81e9922fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeType: 0
+  nodeType: 3
   enemyPrefab: {fileID: 0}
   adjacentNodes:
   - {fileID: 613613904}
@@ -1642,7 +1642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c823edfdbfe837e4baff81e9922fd576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeType: 0
+  nodeType: 3
   enemyPrefab: {fileID: 0}
   adjacentNodes:
   - {fileID: 1356046315}
